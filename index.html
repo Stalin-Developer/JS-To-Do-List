@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Fontawesome -->
+  <link
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+  />
+  <!-- Bootswatch Darkly Theme -->
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+
+  <!--We link the logo to the web page tab.-->
+  <link rel="shortcut icon" href="iconJS.ico">
+
+
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+  <!--We link the footer style sheet.-->
+  <link rel="stylesheet" href="footer.css">
+
+
+
+
+  <title>JS Todo List</title>
+</head>
+<body>
+  <!-- Navbar -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">JS Todo List</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+            Home <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" id="filters">
+        <label class="font-weight-bold text-info mr-3">Filters</label>
+        <input type="radio" name="type" value="all" class="mx-1" checked>
+        <label for="male" class="mb-0">All</label>
+        <input type="radio" name="type" value="completed" class="mx-1">
+        <label for="female" class="mb-0">Completed</label>
+        <input type="radio" name="type" value="uncompleted" class="mx-1">
+        <label for="other" class="mr-2 mb-0">Uncompleted</label> 
+
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          name="words"
+          placeholder="Words"
+          aria-label="Search"
+        >
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit" id="search">
+          Search
+        </button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  
+  <div
+    class="modal fade"
+    id="modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            Edit Todo
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger d-none" role="alert" id="modal-alert">
+            A simple danger alert—check it out!
+          </div>
+          <form>
+            <div class="form-group">
+              <label>Title</label>
+              <input
+                id="modal-title"
+                type="text"
+                class="form-control"
+                placeholder="Do Something"
+              />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" id="modal-description" rows="3">
+
+              </textarea>
+            </div>
+            <div class="form-group d-inline-flex">
+              <label>Completed</label>
+              <div class="mt-1 ml-2">
+                <input
+                id="modal-completed"
+                type="checkbox"
+              />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-info" id="modal-btn">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="container pt-3">
+      <div class="alert alert-danger d-none" role="alert" id="alert">
+        A simple danger alert—check it out!
+      </div>
+
+      <!-- Add Todo -->
+
+      <div>
+        <form> 
+          <div class="row">
+            <div class="col-sm-3 d-sm-flex align-items-center">
+              <label class="m-sm-0">Title</label>
+              <input
+                type="text"
+                id="title"
+                class="form-control ml-sm-2"
+                placeholder="Learn"
+              >
+            </div>
+            <div class="px-sm-2 col-sm-7 d-sm-flex align-items-center mt-2 mt-sm-0">
+              <label class="m-sm-0">Description</label>
+              <input
+                type="text"
+                id="description"
+                class="form-control ml-sm-2"
+                placeholder="Watch JS Tutorials"
+              >
+            </div>
+            <div class="col-sm-2 d-sm-flex justify-content-end mt-4 mt-sm-0">
+              <button type="button" class="btn btn-info btn-block" id="add">
+                Add
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Table -->
+
+      <div class="mt-5">
+        <table class="table table-striped" id="table">
+          <thead>
+            <tr>
+              <th scope="col">Todo</th>
+              <th scope="col">Description</th>
+              <th scope="col">
+                <div class="d-flex justify-content-center">
+                  Completed
+                </div>
+              </th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--Content generated with JS.-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+  <!--Footer Seccion.-->
+  <footer>
+    <div class="containerContent">
+        <!--Part 1-->
+        <div class="footerContent1">
+            <h3>Stalin <span id="developer">Developer</span></h3>
+            <p>
+                I am a web developer passionate about creating creative and user-friendly web experiences. 
+                Committed to excellence and constant evolution of skills.
+            </p>
+            
+        </div>
+
+
+        <!--Part 2-->
+        <div class="footerContent2">
+            <h3>Contact me:</h3>
+            <div class="meIcons">
+                <!--We are going to show our email in a modal window.-->
+                <div class="modal-buton">
+                    <label for="btn-modal">
+                        <i class="fa-regular fa-envelope"></i>
+                    </label>
+                </div>
+
+
+                <a href="https://github.com/Stalin-Developer"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/stalin-developer"><i class="fab fa-linkedin"></i></a>
+            </div>
+            
+        </div>
+
+
+        
+
+    </div>
+
+    <!--Copyright-->
+    <div class="copyrightBar">
+        <!--The placeholder is for put the year dynamically with javascript.-->
+        <p>© <span id="year-placeholder"></span> <a href="https://www.linkedin.com/in/stalin-developer"> Stalin Developer.</a> All rights reserved.</p>
+    </div>
+
+</footer>
+
+
+
+
+
+
+
+<!--Modal window for the developer's email.-->
+<!--The input wil help us to show and hide the window modal only using css.-->
+<input type="checkbox" id="btn-modal">
+<div class="container-modal">
+    <div class="content-modal">
+        <h3>Stalin Developer Email:</h3>
+        
+        <!--With the readonly the user won't can edit it.-->
+        <input type="text" class="text" value="leonelstalin94@gmail.com" readonly>
+        <i class="fa-solid fa-circle-check"></i>
+
+        <!--Buttons-->
+        <div class="buttons-modal">
+            <!--Copy button.-->
+            <div class="btn-copy">
+                <!--The for property helps us to make a relation with the input.-->
+                <label for="text">Copy</label>
+            </div>
+
+            <!--Close button.-->
+            <div class="btn-close">
+                <!--The for property helps us to make a relation with the input.-->
+                <label for="btn-modal">Close</label>
+            </div>
+        </div>
+        
+    </div>
+
+    <!--Background that serves us to close the window modal as well.-->
+    <label for="btn-modal" class="close-background"></label>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- JQuery -->
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+    crossorigin="anonymous"
+  ></script>
+  <!-- Bootstrap -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <!-- JS Code -->
+  <!--With module the javascript file can upload more javascript files.-->
+  <script src="js/index.js" type="module"></script>
+
+
+  <!--We import the footer javascript file.-->
+  <script src="footer.js"></script>
+
+</body>
+</html>

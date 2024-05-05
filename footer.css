@@ -1,0 +1,400 @@
+/*FOOTER SECCION*/
+/*Styles to the container that has the content.*/
+footer{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -500px;
+
+    /*This is for to take the space left in the bottom of the page.*/
+    transform: translateY(190px);    
+}
+.containerContent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    
+    
+    /*This could serves us to apply responsive desing easily.*/
+    font-size: 1.3vw;
+
+    background: black;
+}
+
+
+/*We trying to separate the titles from the content.*/
+.containerContent h3{
+    margin-bottom: 3%;
+
+    color: #cacaca;
+}
+
+
+
+/*Styles for footerContent1*/
+.footerContent1{
+    width: 40%;
+}
+
+.footerContent1 #developer{
+    color: #001ef9;
+    font-family: serif;
+    font-style: italic;
+}
+
+/*We try to move the content down a little from the title.*/
+.footerContent1 p{
+    text-align: justify;
+    color: #cacaca;
+}
+
+
+
+
+
+
+
+
+/*Styles for footerContent2*/
+.footerContent2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.footerContent2 h3{
+    color: #b39418;
+    text-align: center;
+}
+
+.footerContent2 .meIcons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 135%;
+}
+.footerContent2 .meIcons{
+    display: flex;
+    justify-content: right;
+}
+
+
+
+
+
+
+
+
+
+/*Styles for footerContent2's icons.*/
+.meIcons{
+    display: flex;
+    justify-content: start;
+    padding-top: 3%;
+    
+    
+}
+.meIcons a{
+    margin-right: 15%;
+}
+
+
+/*Margin for the email icon.*/
+.meIcons .modal-buton{
+    margin-right: 15%;
+}
+
+
+.meIcons i{
+    font-size: 150%;
+}
+
+/*Styles for each icon.*/
+/*Color for the email icon.*/
+.meIcons .modal-buton{
+    color: #b8b8b8;
+    transition: all 0.5s;
+}
+.meIcons .modal-buton label{
+    cursor: pointer;
+}
+
+.meIcons a:nth-child(2){
+    color: #b8b8b8;
+    transition: all 0.5s;
+}
+.meIcons a:nth-child(3){
+    color: #b8b8b8;
+    transition: all 0.5s;
+}
+
+
+
+/*Styles on hover in each icon.*/
+/*Hover for the email icon.*/
+.meIcons .modal-buton:hover{
+    color: #009dff;
+    transform: scale(1.2);
+}
+
+.meIcons a:nth-child(2):hover{
+    color: #fff;
+    transform: scale(1.2);
+}
+.meIcons a:nth-child(3):hover{
+    color: #0077b5;
+    transform: scale(1.2);
+}
+
+
+
+
+
+/*Styles for the copyrightBar.*/
+.copyrightBar{
+    background: #fcb03b;
+
+    font-size: 2.4vh;
+
+    /*We place the sentence.*/
+    
+}
+/*Try to center the paragraph.*/
+.copyrightBar p{
+    position: relative;
+    top: 7px;
+    text-align: center;
+}
+
+
+
+
+/*Styles for the link of copyrightBar.*/
+.copyrightBar a{
+    /*Remove underline.*/
+    text-decoration: none;
+
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Styles for the modal window.*/
+/*We disappear the check input.*/
+#btn-modal{
+    display: none;
+}
+
+/*Styles for the container of the window modal.*/
+.container-modal{
+    width: 100%;
+    height: 100vh;
+
+    /*Glued to the screen.*/
+    position: fixed;
+
+    /*The content will be in the beginning in the screen.*/
+    top: 0; left: 0;
+
+    background-color: rgba(144, 148, 150, 0.8);
+
+
+    /*in the modal window it will start hidden*/
+    display: none;
+
+    /*Now our content will be center in the middle.*/
+    justify-content: center;
+    align-items: center;
+
+    /*We make sure that our modal container will be over others elements.*/
+    z-index: 500;
+}
+
+/*Styles for the window of the content.*/
+.content-modal{
+    width: 100%;
+    
+    /*If the screen is very wide. Then the window only will have this max width.*/
+    max-width: 400px;
+
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+/*Styles for the content.*/
+.container-modal h3{
+    margin-bottom: 7px;
+    color: black;
+}
+
+/*Styles for the input.*/
+.container-modal input{
+    outline: none;
+}
+
+
+/*Styles for the checked icon.*/
+.container-modal i{
+    color: rgb(2, 208, 2);
+    transform: translateY(10%);
+    display: none;
+}
+
+
+/*Styles for the buttons.*/
+.container-modal .buttons-modal{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/*Styles for the button close.*/
+.content-modal .btn-close{
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+.container-modal .btn-close label{
+    padding: 7px 10px;
+    background-color: #2391ff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.container-modal .btn-close label:hover{
+    background-color: #1b7ad8;
+}
+
+/*Styles for the button copy.*/
+.content-modal .btn-copy{
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+.container-modal .btn-copy label{
+    padding: 7px 10px;
+    background-color: #2391ff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.container-modal .btn-copy label:hover{
+    background-color: #1b7ad8;
+}
+
+
+
+/*Close and open the window modal.*/
+/*All this is related with the input check*/
+#btn-modal:checked ~ .container-modal{
+    display: flex;
+}
+
+
+/*Close window modal when we do click on the background.*/
+.close-background{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0; left: 0;
+
+    /*It is so that it does not cover our modal window*/
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*MEDIA QUERYS*/
+/*Media Query 850px.*/
+@media screen and (max-width: 850px) {
+    /*FOOTER SECCION.*/
+    .containerContent{
+        /*This could serves us to apply responsive desing easily.*/
+        font-size: 2.2vw;
+    
+    }
+
+    /*Styles for the copyrightBar.*/
+    .copyrightBar{
+        font-size: 2vh;
+    }
+
+}
+
+
+
+
+
+
+
+/*Media Query 750pxs.*/
+@media screen and (max-width: 750px) {
+    /*FOOTER SECCION.*/
+    /*Styles for the copyrightBar.*/
+    .containerContent{
+        /*This could serves us to apply responsive desing easily.*/
+        font-size: 2.5vw;
+    
+    }
+    .containerContent h3{
+        font-size: 3vw;
+    }
+
+    .copyrightBar{
+        font-size: 1.4vh;
+    }
+
+}

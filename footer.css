@@ -383,6 +383,12 @@ footer{
 /*Media Query 750pxs.*/
 @media screen and (max-width: 750px) {
     /*FOOTER SECCION.*/
+    footer{
+    
+        /*This is for to take the space left in the bottom of the page.*/
+        transform: translateY(40px);    
+    }
+
     /*Styles for the copyrightBar.*/
     .containerContent{
         /*This could serves us to apply responsive desing easily.*/
